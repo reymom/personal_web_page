@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ user.username }}'s predictions</h1>
+            <p class="lead">
+                Select your plan and start hacking the future.
+                At <a href="https://reymom.github.io/" target="_blank">reymom.github.io</a>
+                you will find assessment on what, how much and when you should get things done
+                in order to obtain the cheapest prices and the highest rewards. Some of our predictions:
+            </p>
+            <div class="row">
+                <div class="col-6">
+                    <ul class="lead">
+                        <li>Football matches</li>
+                        <li>Prices of flights</li>
+                        <li>Prices of technology products</li>
+                        {% for prediction in predictions %}
+                        <li>{{ prediction.author.username }} predicts : <b>{{ prediction.body }}</b></li>
+                        {% endfor %}
+                        <li>Whatever you have in your mind</li>
+                    </ul>
+                    <p class="lead">Consult your new future!</p>
+                    <p><a href="https://reymom.github.io/"
+                          target="_blank"
+                          class="btn btn-success btn-lg">
+                        Get started today</a></p>
+                </div>
+                <div class="col-6 text-right">
+                    <img src="images/logo-reymon.png" alt="My Logo: Witch wrapping me.">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Sport bets</h2>
+                <p>Betting houses arrange their offers so that they never loose on average. Nevertheless,
+                    we explode flaws and statistical deviations in order to train our most advanced
+                    Artificial Intelligence that allows you to crush the odds.</p>
+                <p><a href="https://reymom.github.io/"
+                      target="_blank"
+                      class="btn btn-success">Learn More »</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Stock markets</h2>
+                <p>We help you develop the best strategy in order to invest efficiently in stock markets. Moreover,
+                we guide you through the exploration of the best stocks and moments to invest in.</p>
+                <p><a href="https://reymom.github.io/" target="_blank" class="btn btn-success">Learn More »</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Products</h2>
+                <p>Willing to buy a brand-new mobile phone, either a flight to your desired vacation's destiny?.
+                We show you an accurate prediction for the prices of lots of products so you can decide to buy it
+                in the precise optimum moment.</p>
+                <p><a href="https://reymom.github.io/" target="_blank" class="btn btn-success">Learn More »</a></p>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright &copy; 2019 ReyPredIct</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="#" class="text-dark">Terms of Use</a>
+                    <span class="text-muted mx-2">|</span>
+                    <a href="#" class="text-dark">Privacy Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <button name="button1">Change user</button>
+    <script src="scripts/main.js"></script>
+{% endblock %}
