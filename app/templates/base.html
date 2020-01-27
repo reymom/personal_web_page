@@ -14,7 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <link rel="icon" type="image/png" href="images/favicon.png">
+        <link rel="icon" type="image/png" href="~/Proyectos/WebPages/projects/personal_web_page/images/favicon.png">
     </head>
 
     <body>
@@ -27,13 +27,17 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
                         <a href="#" class="nav-item nav-link active">Home</a>
-                        <a href="#" class="nav-item nav-link">Services</a>
+                        <a href="{{ url_for('services') }}" class="nav-item nav-link">Services</a>
                         <a href="#" class="nav-item nav-link">About</a>
                         <a href="#" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto">
-                        <a href="#" class="nav-item nav-link">Register</a>
+                        <a href="{{ url_for('register') }}" class="nav-item nav-link">Register</a>
+                        {% if current_user.is_anonymous %}
                         <a href="{{ url_for('login') }}" class="nav-item nav-link">Login</a>
+                        {% else %}
+                        <a href="{{ url_for('logout') }}" class="nav-item nav-link">Logout</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
