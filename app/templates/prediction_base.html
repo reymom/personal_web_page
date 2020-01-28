@@ -1,0 +1,10 @@
+<table style="margin-top:20px; margin-bottom:20px">
+    <tr valign="top">
+        <td><img src="{{ prediction.author.avatar(36) }}"></td>
+        <td>
+            <a href="{{ url_for('user', username=prediction.author.username) }}">
+                {{ prediction.author.username }}
+            </a>
+            predicts: <br>{{ prediction.body }}</td>
+    </tr>
+</table>
