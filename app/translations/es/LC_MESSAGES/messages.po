@@ -1,0 +1,334 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-01-29 21:35+0100\n"
+"PO-Revision-Date: 2020-01-29 20:48+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: app/__init__.py:20
+msgid "Please log in to access this page."
+msgstr "Por favor inicia sesión para acceder a la página."
+
+#: app/email.py:23
+msgid "[PREdic] Reset Your Password"
+msgstr "[PREdic] Resetea Tu Contraseña"
+
+#: app/forms.py:9 app/forms.py:16 app/forms.py:34
+msgid "Username"
+msgstr "Nombre de Usuario"
+
+#: app/forms.py:10 app/forms.py:18 app/forms.py:61
+msgid "Password"
+msgstr "Contraseña"
+
+#: app/forms.py:11
+msgid "Remember me"
+msgstr "Recuérdame"
+
+#: app/forms.py:12
+msgid "Sign in"
+msgstr "Inicia sesión"
+
+#: app/forms.py:17 app/forms.py:56
+msgid "Email"
+msgstr "Email"
+
+#: app/forms.py:19 app/forms.py:62
+msgid "Repeat Password"
+msgstr "Repite la Contraseña"
+
+#: app/forms.py:20 app/routes.py:63 app/templates/base.html:36
+#: app/templates/register.html:4
+msgid "Register"
+msgstr "Registrar"
+
+#: app/forms.py:25 app/forms.py:46
+msgid "Please use a different username."
+msgstr "Por favor usa un nombre de usuario diferente"
+
+#: app/forms.py:30
+msgid "This email is already associated to username"
+msgstr "Este correo ya está asociado a un nombre de usuario"
+
+#: app/forms.py:35
+msgid "About me"
+msgstr "Sobre mi"
+
+#: app/forms.py:36 app/forms.py:52
+msgid "Submit"
+msgstr "Aceptar"
+
+#: app/forms.py:50
+msgid "New Pred"
+msgstr "Nueva Pred"
+
+#: app/forms.py:57 app/forms.py:63
+msgid "Request Password Reset"
+msgstr "Pide Reseteo de Contraseña"
+
+#: app/routes.py:35
+msgid "Invalid username or password"
+msgstr "Nombre de usuario o contraseña inválidos"
+
+#: app/routes.py:42 app/templates/login.html:4
+msgid "Sign In"
+msgstr "Inicia sesión"
+
+#: app/routes.py:61
+msgid "Congratulations, you are now my friend!"
+msgstr "Enhorabuena, ¡ahora somos amigos!"
+
+#: app/routes.py:75
+msgid "Check your email for the instructions to reset your password"
+msgstr "Revise su correo para las instrucciones para resetear la contraseña"
+
+#: app/routes.py:91
+msgid "Your password has been reset."
+msgstr "Tu contraseña se ha reseteado"
+
+#: app/routes.py:126
+msgid "Your changes have been saved."
+msgstr "Sus cambios han sido guardados."
+
+#: app/routes.py:131 app/templates/edit_profile.html:4
+msgid "Edit Profile"
+msgstr "Editar Perfil"
+
+#: app/routes.py:139
+#, python-format
+msgid "User %(username)s not found"
+msgstr "Usuario %(username)s no encontrado"
+
+#: app/templates/404.html:5
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+#: app/templates/404.html:6
+msgid "Back"
+msgstr "Atrás"
+
+#: app/templates/500.html:5
+msgid "An unexpected error has occurred"
+msgstr "Un error inesperado ha ocurrido"
+
+#: app/templates/500.html:6
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr "El administrador ha sido notificado. ¡Perdone las inconveniencias!"
+
+#: app/templates/base.html:8
+msgid "Home page - PREdic"
+msgstr "Página casa - PREdic"
+
+#: app/templates/base.html:30
+msgid "Explore"
+msgstr "Explorar"
+
+#: app/templates/base.html:31
+msgid "About"
+msgstr "Sobre nosotros"
+
+#: app/templates/base.html:32
+msgid "Contact"
+msgstr "Contacto"
+
+#: app/templates/base.html:39
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: app/templates/base.html:43
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: app/templates/explore.html:6
+msgid "Prediction Network"
+msgstr "Red de Predicciones"
+
+#: app/templates/explore.html:23
+msgid "Explore other predictions"
+msgstr "Explorar otras predicciones"
+
+#: app/templates/explore.html:33 app/templates/index.html:16
+#: app/templates/user.html:27
+msgid "«Newer"
+msgstr "«Posteriores"
+
+#: app/templates/explore.html:36 app/templates/index.html:19
+#: app/templates/user.html:30
+msgid "Older»"
+msgstr "Anteriores»"
+
+#: app/templates/index.html:6
+msgid "'s predictions"
+msgstr ": predicciones"
+
+#: app/templates/index.html:25
+msgid "Customize your predictions"
+msgstr "Personaliza tus predicciones"
+
+#: app/templates/index.html:28
+msgid "Select your plan and start hacking the future."
+msgstr "Selecciona tu plan y empieza a hackear tu futuro."
+
+#: app/templates/index.html:29
+msgid "At"
+msgstr "En"
+
+#: app/templates/index.html:30
+msgid ""
+"you will find assessment on what, how much and when you should get things"
+" done"
+msgstr "encontrarás soporte para saber qué, qué cantidad y cuando deberías hacer las "
+" cosas"
+
+
+#: app/templates/index.html:31
+msgid ""
+"in order to obtain the cheapest prices and the highest rewards. Some of "
+"our predictions:"
+msgstr "a fin de obtener los precios más baratos y las recompensas más altas. "
+"Algunas de nuestras predicciones:"
+
+#: app/templates/index.html:36
+msgid "Choose to follow your favourite preds"
+msgstr "Elige seguir tus predicciones favoritas"
+
+#: app/templates/index.html:37
+msgid "Follow and be followed"
+msgstr "Sigue y déjate seguir"
+
+#: app/templates/index.html:38
+msgid "Talk with our boot, fully automated"
+msgstr "Habla con nuestro boot, totalmente automatizado"
+
+#: app/templates/index.html:40
+msgid "Consult your new future!"
+msgstr "¡Consulta tu nuevo futuro!"
+
+#: app/templates/index.html:44
+msgid "Get started today"
+msgstr "Empieza hoy"
+
+#: app/templates/index.html:50
+msgid "Invest in your favourite preds!"
+msgstr "¡Invierte en tus predicciones favoritas!"
+
+#: app/templates/index.html:51
+msgid ""
+"Market explotaiton, sports bet predictions, business projects, "
+"investments of any kind."
+msgstr "Minería de mercado, predicción de apuesetas deportivas, proyectos "
+"empresariales de cualquier tipo."
+
+#: app/templates/index.html:52
+msgid "Fully assessed, with indicators, etc."
+msgstr "Totalmente asesorado, con indicadores, etc."
+
+#: app/templates/index.html:55 app/templates/index.html:61
+#: app/templates/index.html:67
+msgid "Learn More »"
+msgstr "Saber más »"
+
+#: app/templates/index.html:58
+msgid "Develop the best preds"
+msgstr "Desarrolla los mejores predictores"
+
+#: app/templates/index.html:59
+msgid ""
+"Collaborate with me, create teams and connect all things. Rankings, and "
+"extended premium features"
+msgstr ""
+"Colabora conmigo, crea equipos y conecta todas las cosas. Ránquings, y "
+"características extensibles premium"
+
+#: app/templates/index.html:60
+msgid ""
+"such as accessing to the privileged information as virtual indicators of "
+"the models."
+msgstr ""
+"como acceder a información privilegiada, en forma de indicadores virtuales "
+"de los modelos."
+
+#: app/templates/index.html:64
+msgid "Buy predictors"
+msgstr "Compra predictores"
+
+#: app/templates/index.html:65
+msgid ""
+"If you are interested you can contact with me. Conditions based on future"
+" expectations of the"
+msgstr ""
+"Si estás interesado puedes contactar conmigo. Condiciones basadas en futuras"
+" expectativas del"
+
+#: app/templates/index.html:66
+msgid ""
+"model to buy have to be considered, as well as the loses for the friends "
+"of the pred object."
+msgstr ""
+"modelo a comprar han de ser consideradas, así como las pérdidas de los amigos "
+"del objeto predictor."
+
+#: app/templates/login.html:21
+msgid "Forgot your password?"
+msgstr "¿Olvidaste tu contraseña?"
+
+#: app/templates/login.html:21
+msgid "Click to Reset It"
+msgstr "Clica para Resetearla"
+
+#: app/templates/prediction_base.html:10
+msgid "predicts:"
+msgstr "predice:"
+
+#: app/templates/reset_password.html:4
+msgid "Reset Your Password"
+msgstr "Resetea Tu Contraseña"
+
+#: app/templates/reset_password_request.html:4
+msgid "Reset Password"
+msgstr "Resetea la Contraseña"
+
+#: app/templates/user.html:8
+msgid "User"
+msgstr "Usuario"
+
+#: app/templates/user.html:10
+msgid "Last seen on"
+msgstr "Última conexión"
+
+#: app/templates/user.html:11
+msgid "followers"
+msgstr "seguidores"
+
+#: app/templates/user.html:11
+msgid "following."
+msgstr "siguiendo."
+
+#: app/templates/user.html:13
+msgid "Edit your profile"
+msgstr "Edita tu perfil"
+
+#: app/templates/user.html:15
+msgid "Follow"
+msgstr "Sigue"
+
+#: app/templates/user.html:17
+msgid "Unfollow"
+msgstr "Deja de seguir"
+
+#~ msgid "Home page - PreDic"
+#~ msgstr "Pagina Casa - PREdic"
+

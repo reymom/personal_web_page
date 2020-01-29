@@ -3,7 +3,7 @@
 {% block content %}
     <div class="jumbotron">
         {% if not current_user.is_anonymous %}
-        <h1>{{ current_user.username }}: predictions network</h1>
+        <h1>{{ current_user.username }}: {{ _('Prediction Network') }}</h1>
         <div class="row">
             {% if form %}
             <form action="" method="post">
@@ -20,24 +20,22 @@
             {% endif %}
         </div>
         {% else %}
-            <h1>Explore other's predictions</h1>
+            <h1>{{ _('Explore other predictions') }}</h1>
         {% endif %}
-        <div>
-            {% if predictions %}
-            <div class="col-6">
-                <ul class="lead">
-                    {% for prediction in predictions %}
-                        {% include 'prediction_base.html' %}
-                    {% endfor %}
-                </ul>
-                {% if prev_url %}
-                <a href="{{ prev_url }}">«Newer</a>
-                {% endif %}
-                {% if next_url %}
-                <a href="{{ next_url }}">Older»</a>
-                {% endif %}
-            </div>
+        {% if predictions %}
+        <div class="col-6">
+            <ul class="lead">
+                {% for prediction in predictions %}
+                    {% include 'prediction_base.html' %}
+                {% endfor %}
+            </ul>
+            {% if prev_url %}
+            <a href="{{ prev_url }}">{{ _('«Newer') }}</a>
+            {% endif %}
+            {% if next_url %}
+            <a href="{{ next_url }}">{{ _('Older»') }}</a>
             {% endif %}
         </div>
+        {% endif %}
     </div>
 {% endblock %}

@@ -23,3 +23,5 @@ class Config(object):
 
     PREDICTIONS_PER_PAGE_USER = 10
     PREDICTIONS_PER_PAGE_INDEX = 3
+
+    LANGUAGES = ['en', 'es', 'ca', 'de']

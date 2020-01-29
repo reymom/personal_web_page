@@ -3,9 +3,9 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% if title %}
-        <title>{{ title }} - PreDic</title>
+        <title>{{ title }} - PREdic</title>
         {% else %}
-        <title>Home page - PreDic</title>
+        <title>{{ _('Home page - PREdic') }}</title>
         {% endif %}
         <link rel="stylesheet"
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -26,23 +26,21 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="{{ url_for('index') }}"
-                           class="nav-item nav-link {{ 'active' if request.path in ['/', '/index'] }}">Home</a>
                         <a href="{{ url_for('explore') }}"
-                           class="nav-item nav-link {{ 'active' if request.path == '/explore' }}">Explore</a>
-                        <a href="#" class="nav-item nav-link">About</a>
-                        <a href="#" class="nav-item nav-link">Contact</a>
+                           class="nav-item nav-link {{ 'active' if request.path == '/explore' }}">{{ _('Explore') }}</a>
+                        <a href="#" class="nav-item nav-link">{{ _('About') }}</a>
+                        <a href="#" class="nav-item nav-link">{{ _('Contact') }}</a>
                     </div>
                     <div class="navbar-nav ml-auto">
                         <a href="{{ url_for('register') }}"
-                           class="nav-item nav-link {{ 'active' if request.path == '/register' }}">Register</a>
+                           class="nav-item nav-link {{ 'active' if request.path == '/register' }}">{{ _('Register') }}</a>
                         {% if current_user.is_anonymous %}
                         <a href="{{ url_for('login') }}"
-                           class="nav-item nav-link {{ 'active' if request.path == '/login' }}">Login</a>
+                           class="nav-item nav-link {{ 'active' if request.path == '/login' }}">{{ _('Login') }}</a>
                         {% else %}
                         <a href="{{ url_for('user', username=current_user.username) }}"
                            class="nav-item nav-link {{ 'active' if request.path == '/user/{}'.format(current_user.username) }}">Profile</a>
-                        <a href="{{ url_for('logout') }}" class="nav-item nav-link">Logout</a>
+                        <a href="{{ url_for('logout') }}" class="nav-item nav-link">{{ _('Logout') }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -73,4 +71,8 @@
             </div>
     </footer>
     </div>
+    {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+    {% block scripts %}
+    {% endblock %}
 </html>
