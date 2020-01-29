@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+        {% if not current_user.is_anonymous %}
+        <h1>{{ current_user.username }}: predictions network</h1>
+        <div class="row">
+            {% if form %}
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.prediction.label }}<br>
+                    {{ form.prediction(cols=32, rows=4) }}<br>
+                    {% for error in form.prediction.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+            {% endif %}
+        </div>
+        {% else %}
+            <h1>Explore other's predictions</h1>
+        {% endif %}
+        <div>
+            {% if predictions %}
+            <div class="col-6">
+                <ul class="lead">
+                    {% for prediction in predictions %}
+                        {% include 'prediction_base.html' %}
+                    {% endfor %}
+                </ul>
+                {% if prev_url %}
+                <a href="{{ prev_url }}">«Newer</a>
+                {% endif %}
+                {% if next_url %}
+                <a href="{{ next_url }}">Older»</a>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

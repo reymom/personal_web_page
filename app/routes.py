@@ -8,26 +8,18 @@ from app.models import User, Prediction
 from werkzeug.urls import url_parse
 
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/')
+@app.route('/index')
 def index():
     if not current_user.is_anonymous:
-        form = PredictionForm()
-        if form.validate_on_submit():
-            prediction = Prediction(body=form.prediction.data, author=current_user)
-            db.session.add(prediction)
-            db.session.commit()
-            flash('Your prediction is now posted!')
-            return redirect(url_for('index'))
         page = request.args.get('page', 1, type=int)
         predictions = current_user.followed_predictions().paginate(
             page, app.config['PREDICTIONS_PER_PAGE_INDEX'], False)
         next_url = url_for('index', page=predictions.next_num) if predictions.has_next else None
         prev_url = url_for('index', page=predictions.prev_num) if predictions.has_prev else None
-        return render_template('index.html', title='Home', form=form, predictions=predictions.items,
-                               next_url=next_url, prev_url=prev_url)
-    else:
-        return render_template('index.html', title='Home')
+        return render_template('index.html', title='Home', predictions=predictions.items,
+                                next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title='Home')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -169,13 +161,22 @@ def unfollow(username):
     return redirect(url_for('user', username=username))
 
 
-@app.route('/explore')
+@app.route('/explore', methods=['GET', 'POST'])
 @login_required
 def explore():
-    page = request.args.get('page', 1, type=int)
-    predictions = Prediction.query.order_by(Prediction.timestamp.desc()).paginate(
-        page, app.config['PREDICTIONS_PER_PAGE_INDEX'], False)
-    next_url = url_for('explore', page=predictions.next_num) if predictions.has_next else None
-    prev_url = url_for('explore', page=predictions.prev_num) if predictions.has_prev else None
-    return render_template('index.html', title='Explore', predictions=predictions.items,
-                           next_url=next_url, prev_url=prev_url)
+    if not current_user.is_anonymous:
+        form = PredictionForm()
+        if form.validate_on_submit():
+            prediction = Prediction(body=form.prediction.data, author=current_user)
+            db.session.add(prediction)
+            db.session.commit()
+            flash('Your prediction is now posted!')
+            return redirect(url_for('explore'))
+        page = request.args.get('page', 1, type=int)
+        predictions = Prediction.query.order_by(Prediction.timestamp.desc()).paginate(
+            page, app.config['PREDICTIONS_PER_PAGE_INDEX'], False)
+        next_url = url_for('explore', page=predictions.next_num) if predictions.has_next else None
+        prev_url = url_for('explore', page=predictions.prev_num) if predictions.has_prev else None
+        return render_template('explore.html', title='Explore', form=form, predictions=predictions.items,
+                               next_url=next_url, prev_url=prev_url)
+    return render_template('explore.html', title='Explore')

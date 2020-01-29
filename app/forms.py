@@ -46,7 +46,7 @@ class EditProfileForm(FlaskForm):
 
 
 class PredictionForm(FlaskForm):
-    prediction = TextAreaField('What prediction do you offer?', validators=[
+    prediction = TextAreaField('New Pred', validators=[
         DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('Submit')
 

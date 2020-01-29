@@ -58,7 +58,7 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u1.followed.count(), 0)
         self.assertEqual(u2.followers.count(), 0)
 
-    def test_follow_posts(self):
+    def test_follow_predictions(self):
         # create four users
         u1 = User(username='john', email='john@example.com')
         u2 = User(username='susan', email='susan@example.com')

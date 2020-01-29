@@ -14,30 +14,34 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!--        <link rel="icon" type="image/png" href="images/favicon.png">-->
+        <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
     </head>
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
             <div class="container">
-                <a href="{{ url_for('index') }}" class="navbar-brand mr-3">PREdict</a>
+                <a href="{{ url_for('index') }}" class="navbar-brand mr-3">PREdic</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="#" class="nav-item nav-link active">Home</a>
-                        <a href="{{ url_for('explore') }}" class="nav-item nav-link">Explore</a>
+                        <a href="{{ url_for('index') }}"
+                           class="nav-item nav-link {{ 'active' if request.path in ['/', '/index'] }}">Home</a>
+                        <a href="{{ url_for('explore') }}"
+                           class="nav-item nav-link {{ 'active' if request.path == '/explore' }}">Explore</a>
                         <a href="#" class="nav-item nav-link">About</a>
                         <a href="#" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav ml-auto">
-                        <a href="{{ url_for('register') }}" class="nav-item nav-link">Register</a>
+                        <a href="{{ url_for('register') }}"
+                           class="nav-item nav-link {{ 'active' if request.path == '/register' }}">Register</a>
                         {% if current_user.is_anonymous %}
-                        <a href="{{ url_for('login') }}" class="nav-item nav-link">Login</a>
+                        <a href="{{ url_for('login') }}"
+                           class="nav-item nav-link {{ 'active' if request.path == '/login' }}">Login</a>
                         {% else %}
                         <a href="{{ url_for('user', username=current_user.username) }}"
-                           class="nav-item nav-link">Profile</a>
+                           class="nav-item nav-link {{ 'active' if request.path == '/user/{}'.format(current_user.username) }}">Profile</a>
                         <a href="{{ url_for('logout') }}" class="nav-item nav-link">Logout</a>
                         {% endif %}
                     </div>
@@ -48,14 +52,25 @@
     <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
             {% for message in messages %}
-            <li>{{ message }}</li>
+            <div class="alert alert-info" role="alert">{{ message }}</div>
             {% endfor %}
-        </ul>
         {% endif %}
         {% endwith %}
         {% block content %}
         {% endblock %}
+        <hr>
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Copyright &copy; 2019 PREdic</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <a href="#" class="text-dark">Terms of Use</a>
+                    <span class="text-muted mx-2">|</span>
+                    <a href="#" class="text-dark">Privacy Policy</a>
+                </div>
+            </div>
+    </footer>
     </div>
 </html>

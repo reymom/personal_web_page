@@ -5,21 +5,6 @@
         {% if not current_user.is_anonymous %}
         <h1>{{ current_user.username }}'s predictions</h1>
         <div class="row">
-            <div class="col-6">
-                {% if form %}
-                <form action="" method="post">
-                    {{ form.hidden_tag() }}
-                    <p>
-                        {{ form.prediction.label }}<br>
-                        {{ form.prediction(cols=32, rows=4) }}<br>
-                        {% for error in form.prediction.errors %}
-                            <span style="color: red;">[{{ error }}]</span>
-                        {% endfor %}
-                    </p>
-                    <p>{{ form.submit() }}</p>
-                </form>
-                {% endif %}
-            </div>
             {% if predictions %}
             <div class="col-6">
                 <ul class="lead">
@@ -58,10 +43,6 @@
                       class="btn btn-success btn-lg">
                     Get started today</a></p>
             </div>
-            <div class="col-6 text-right">
-<!--                <img src="logo-reymon.png"-->
-<!--                     alt="My Logo: Witch wrapping me.">-->
-            </div>
         </div>
     </div>
     <div class="row">
@@ -86,19 +67,6 @@
             <p><a href="#" target="_blank" class="btn btn-success">Learn More »</a></p>
         </div>
     </div>
-    <hr>
-    <footer>
-        <div class="row">
-            <div class="col-md-6">
-                <p>Copyright &copy; 2019 PredIct</p>
-            </div>
-            <div class="col-md-6 text-md-right">
-                <a href="#" class="text-dark">Terms of Use</a>
-                <span class="text-muted mx-2">|</span>
-                <a href="#" class="text-dark">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
-    <button name="button1">Change user</button>
-    <script src="scripts/main.js"></script>
+    <!-- <button name="button1">Change user</button> -->
+    <!-- <script src="scripts/main.js"></script> -->
 {% endblock %}
