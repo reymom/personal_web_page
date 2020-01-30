@@ -33,8 +33,8 @@ if not app.debug:
             secure = ()
         mail_handler = SMTPHandler(
             mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-            fromaddr='no-reply@' + app.config['MAIL_SERVER'],
-            toaddrs=app.config['ADMINS'], subject='PREdic Web Failure',
+            fromaddr='ramonfcb@' + app.config['MAIL_SERVER'],
+            toaddrs=app.config['ADMINS'], subject='[PREdic] Web Failure',
             credentials=auth, secure=secure)
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
@@ -53,7 +53,7 @@ if not app.debug:
 
 @babel.localeselector
 def get_locale():
-    # return request.accept_languages.best_match(app.config['LANGUAGES'])
-    return 'es'
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    # return 'es'
 
 from app import routes, models, errors

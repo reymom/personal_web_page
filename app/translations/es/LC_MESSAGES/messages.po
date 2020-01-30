@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-29 21:35+0100\n"
+"POT-Creation-Date: 2020-01-30 22:02+0100\n"
 "PO-Revision-Date: 2020-01-29 20:48+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -50,7 +50,7 @@ msgstr "Email"
 msgid "Repeat Password"
 msgstr "Repite la Contraseña"
 
-#: app/forms.py:20 app/routes.py:63 app/templates/base.html:36
+#: app/forms.py:20 app/routes.py:73 app/templates/base.html:36
 #: app/templates/register.html:4
 msgid "Register"
 msgstr "Registrar"
@@ -79,38 +79,50 @@ msgstr "Nueva Pred"
 msgid "Request Password Reset"
 msgstr "Pide Reseteo de Contraseña"
 
-#: app/routes.py:35
+#: app/routes.py:45
 msgid "Invalid username or password"
 msgstr "Nombre de usuario o contraseña inválidos"
 
-#: app/routes.py:42 app/templates/login.html:4
+#: app/routes.py:52 app/templates/login.html:4
 msgid "Sign In"
 msgstr "Inicia sesión"
 
-#: app/routes.py:61
+#: app/routes.py:71
 msgid "Congratulations, you are now my friend!"
 msgstr "Enhorabuena, ¡ahora somos amigos!"
 
-#: app/routes.py:75
+#: app/routes.py:85
 msgid "Check your email for the instructions to reset your password"
 msgstr "Revise su correo para las instrucciones para resetear la contraseña"
 
-#: app/routes.py:91
+#: app/routes.py:101
 msgid "Your password has been reset."
 msgstr "Tu contraseña se ha reseteado"
 
-#: app/routes.py:126
+#: app/routes.py:129
 msgid "Your changes have been saved."
 msgstr "Sus cambios han sido guardados."
 
-#: app/routes.py:131 app/templates/edit_profile.html:4
+#: app/routes.py:134 app/templates/edit_profile.html:4
 msgid "Edit Profile"
 msgstr "Editar Perfil"
 
-#: app/routes.py:139
+#: app/routes.py:142
 #, python-format
 msgid "User %(username)s not found"
 msgstr "Usuario %(username)s no encontrado"
+
+#: app/routes.py:194 app/templates/base.html:30
+msgid "Explore"
+msgstr "Explorar"
+
+#: app/translate.py:10
+msgid "Error: the translation service is not configured."
+msgstr ""
+
+#: app/translate.py:15
+msgid "Error: the translation service failed."
+msgstr ""
 
 #: app/templates/404.html:5
 msgid "Page not found"
@@ -132,10 +144,6 @@ msgstr "El administrador ha sido notificado. ¡Perdone las inconveniencias!"
 msgid "Home page - PREdic"
 msgstr "Página casa - PREdic"
 
-#: app/templates/base.html:30
-msgid "Explore"
-msgstr "Explorar"
-
 #: app/templates/base.html:31
 msgid "About"
 msgstr "Sobre nosotros"
@@ -151,6 +159,10 @@ msgstr "Iniciar sesión"
 #: app/templates/base.html:43
 msgid "Logout"
 msgstr "Cerrar sesión"
+
+#: app/templates/base.html:86
+msgid "Error: Could not contact translator server."
+msgstr ""
 
 #: app/templates/explore.html:6
 msgid "Prediction Network"
@@ -190,15 +202,16 @@ msgstr "En"
 msgid ""
 "you will find assessment on what, how much and when you should get things"
 " done"
-msgstr "encontrarás soporte para saber qué, qué cantidad y cuando deberías hacer las "
-" cosas"
-
+msgstr ""
+"encontrarás soporte para saber qué, qué cantidad y cuando deberías hacer "
+"las  cosas"
 
 #: app/templates/index.html:31
 msgid ""
 "in order to obtain the cheapest prices and the highest rewards. Some of "
 "our predictions:"
-msgstr "a fin de obtener los precios más baratos y las recompensas más altas. "
+msgstr ""
+"a fin de obtener los precios más baratos y las recompensas más altas. "
 "Algunas de nuestras predicciones:"
 
 #: app/templates/index.html:36
@@ -229,7 +242,8 @@ msgstr "¡Invierte en tus predicciones favoritas!"
 msgid ""
 "Market explotaiton, sports bet predictions, business projects, "
 "investments of any kind."
-msgstr "Minería de mercado, predicción de apuesetas deportivas, proyectos "
+msgstr ""
+"Minería de mercado, predicción de apuesetas deportivas, proyectos "
 "empresariales de cualquier tipo."
 
 #: app/templates/index.html:52
@@ -258,8 +272,8 @@ msgid ""
 "such as accessing to the privileged information as virtual indicators of "
 "the models."
 msgstr ""
-"como acceder a información privilegiada, en forma de indicadores virtuales "
-"de los modelos."
+"como acceder a información privilegiada, en forma de indicadores "
+"virtuales de los modelos."
 
 #: app/templates/index.html:64
 msgid "Buy predictors"
@@ -270,16 +284,16 @@ msgid ""
 "If you are interested you can contact with me. Conditions based on future"
 " expectations of the"
 msgstr ""
-"Si estás interesado puedes contactar conmigo. Condiciones basadas en futuras"
-" expectativas del"
+"Si estás interesado puedes contactar conmigo. Condiciones basadas en "
+"futuras expectativas del"
 
 #: app/templates/index.html:66
 msgid ""
 "model to buy have to be considered, as well as the loses for the friends "
 "of the pred object."
 msgstr ""
-"modelo a comprar han de ser consideradas, así como las pérdidas de los amigos "
-"del objeto predictor."
+"modelo a comprar han de ser consideradas, así como las pérdidas de los "
+"amigos del objeto predictor."
 
 #: app/templates/login.html:21
 msgid "Forgot your password?"
@@ -292,6 +306,10 @@ msgstr "Clica para Resetearla"
 #: app/templates/prediction_base.html:10
 msgid "predicts:"
 msgstr "predice:"
+
+#: app/templates/prediction_base.html:21
+msgid "Translate"
+msgstr ""
 
 #: app/templates/reset_password.html:4
 msgid "Reset Your Password"

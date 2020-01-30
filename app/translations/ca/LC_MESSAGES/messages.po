@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-29 21:35+0100\n"
+"POT-Creation-Date: 2020-01-30 22:02+0100\n"
 "PO-Revision-Date: 2020-01-29 20:51+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ca\n"
@@ -50,7 +50,7 @@ msgstr "Email"
 msgid "Repeat Password"
 msgstr "Rescriu Contrasenya"
 
-#: app/forms.py:20 app/routes.py:63 app/templates/base.html:36
+#: app/forms.py:20 app/routes.py:73 app/templates/base.html:36
 #: app/templates/register.html:4
 msgid "Register"
 msgstr "Registrar"
@@ -79,40 +79,52 @@ msgstr "Nova Pred"
 msgid "Request Password Reset"
 msgstr "Demana Reseteig de la Contrasenya"
 
-#: app/routes.py:35
+#: app/routes.py:45
 msgid "Invalid username or password"
 msgstr "El nom d'usuari o contrasenya no és vàlid"
 
-#: app/routes.py:42 app/templates/login.html:4
+#: app/routes.py:52 app/templates/login.html:4
 msgid "Sign In"
 msgstr "Inicia Sessió"
 
-#: app/routes.py:61
+#: app/routes.py:71
 msgid "Congratulations, you are now my friend!"
 msgstr "Enhorabona, ara som amics!"
 
-#: app/routes.py:75
+#: app/routes.py:85
 msgid "Check your email for the instructions to reset your password"
 msgstr ""
 "Revisa el teu correu per les instruccions per resetejar la seva "
 "contrasenya"
 
-#: app/routes.py:91
+#: app/routes.py:101
 msgid "Your password has been reset."
 msgstr "La teva contrasenya ha sigut resetejada"
 
-#: app/routes.py:126
+#: app/routes.py:129
 msgid "Your changes have been saved."
 msgstr "Els seus canvis s'han guardat."
 
-#: app/routes.py:131 app/templates/edit_profile.html:4
+#: app/routes.py:134 app/templates/edit_profile.html:4
 msgid "Edit Profile"
 msgstr "Edita el Perfil"
 
-#: app/routes.py:139
+#: app/routes.py:142
 #, python-format
 msgid "User %(username)s not found"
 msgstr "Usuari %(username)s no trobat"
+
+#: app/routes.py:194 app/templates/base.html:30
+msgid "Explore"
+msgstr "Explorar"
+
+#: app/translate.py:10
+msgid "Error: the translation service is not configured."
+msgstr ""
+
+#: app/translate.py:15
+msgid "Error: the translation service failed."
+msgstr ""
 
 #: app/templates/404.html:5
 msgid "Page not found"
@@ -134,10 +146,6 @@ msgstr "L'administrador ha sigut notificat. Perdoni per la inconveniència"
 msgid "Home page - PREdic"
 msgstr ""
 
-#: app/templates/base.html:30
-msgid "Explore"
-msgstr "Explorar"
-
 #: app/templates/base.html:31
 msgid "About"
 msgstr "Sobre nosaltres"
@@ -154,8 +162,12 @@ msgstr "Inicia sessió"
 msgid "Logout"
 msgstr "Tanca sessió"
 
+#: app/templates/base.html:86
+msgid "Error: Could not contact translator server."
+msgstr ""
+
 #: app/templates/explore.html:6
-msgid "predictions network"
+msgid "Prediction Network"
 msgstr ""
 
 #: app/templates/explore.html:23
@@ -283,6 +295,10 @@ msgstr "Clica per resetejar-la"
 msgid "predicts:"
 msgstr "prediu:"
 
+#: app/templates/prediction_base.html:21
+msgid "Translate"
+msgstr ""
+
 #: app/templates/reset_password.html:4
 msgid "Reset Your Password"
 msgstr "Reseteja la teva Contrasenya"
@@ -321,4 +337,7 @@ msgstr "Deixa de seguir"
 
 #~ msgid "Home page - PreDic"
 #~ msgstr "Pàgina Casa - PREdic"
+
+#~ msgid "predictions network"
+#~ msgstr ""
 

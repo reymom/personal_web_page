@@ -8,6 +8,20 @@
                 {{ prediction.author.username }}
             </a>
             {{ _('predicts:') }}
-            <br>{{ prediction.body }}</td>
+            <br>
+            <span id="prediction{{ prediction.id }}">{{ prediction.body }}</span>
+            {% if prediction.language and prediction.language != g.locale %}
+            <br>
+            <p class="text-secondary"><em>
+                <span id="translation{{ prediction.id }}">
+                    <a href="javascript:translate(
+                                    '#prediction{{ prediction.id }}',
+                                    '#translation{{ prediction.id }}',
+                                    '{{ prediction.language }},
+                                    '{{ g.locale }}');">{{ _('Translate') }}</a>
+                </span>
+            </em></p>
+            {% endif %}
+        </td>
     </tr>
 </table>

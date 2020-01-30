@@ -1,15 +1,11 @@
 from datetime import datetime
 from time import time
-from app import app, db, login
 from flask_login import UserMixin
 from hashlib import md5
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 
-
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
+from app import app, db, login
 
 
 followers = db.Table('followers',
@@ -100,18 +96,30 @@ class User(UserMixin, db.Model):
         return User.query.get(id)
 
 
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+
 class Prediction(db.Model):
     id = db.Column(
-        db.Integer, primary_key=True
+        db.Integer,
+        primary_key=True
     )
     body = db.Column(
         db.String(140)
     )
     timestamp = db.Column(
-        db.DateTime, index=True, default=datetime.utcnow
+        db.DateTime,
+        index=True,
+        default=datetime.utcnow
     )
     user_id = db.Column(
-        db.Integer, db.ForeignKey('user.id')
+        db.Integer,
+        db.ForeignKey('user.id')
+    )
+    language = db.Column(
+        db.String(5)
     )
 
     def __repr__(self):

@@ -25,3 +25,5 @@ class Config(object):
     PREDICTIONS_PER_PAGE_INDEX = 3
 
     LANGUAGES = ['en', 'es', 'ca', 'de']
+
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')

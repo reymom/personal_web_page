@@ -1,18 +1,23 @@
 from datetime import datetime
+from guess_language import guess_language
 from werkzeug.urls import url_parse
 
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, g, redirect, render_template, request, url_for, jsonify
 from flask_babel import _, get_locale
 from flask_login import current_user, login_user, login_required, logout_user
 from app import app, db
-from app.forms import EditProfileForm, LoginForm, PredictionForm, RegistrationForm, ResetPasswordForm, ResetPasswordRequestForm
+from app.forms import EditProfileForm, LoginForm, PredictionForm, RegistrationForm, ResetPasswordForm, \
+    ResetPasswordRequestForm
 from app.email import send_password_reset_email
 from app.models import User, Prediction
+from app.translate import translate
 
 
 @app.before_request
 def before_request():
-    g.locale = str(get_locale)
+    if current_user.is_authenticated:
+        current_user.las_seen = datetime.utcnow()
+    g.locale = str(get_locale())
 
 
 @app.route('/')
@@ -113,13 +118,6 @@ def user(username):
                            next_url=next_url, prev_url=prev_url)
 
 
-@app.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
-
-
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
@@ -174,7 +172,14 @@ def explore():
     if not current_user.is_anonymous:
         form = PredictionForm()
         if form.validate_on_submit():
-            prediction = Prediction(body=form.prediction.data, author=current_user)
+            language = guess_language(form.prediction.data)
+            if language == 'UNKNOWN' or len(language) > 5:
+                language = ''
+            prediction = Prediction(
+                body=form.prediction.data,
+                author=current_user,
+                language=language
+            )
             db.session.add(prediction)
             db.session.commit()
             flash('Your prediction is now posted!')
@@ -186,4 +191,12 @@ def explore():
         prev_url = url_for('explore', page=predictions.prev_num) if predictions.has_prev else None
         return render_template('explore.html', title='Explore', form=form, predictions=predictions.items,
                                next_url=next_url, prev_url=prev_url)
-    return render_template('explore.html', title='Explore')
+    return render_template('explore.html', title=_('Explore'))
+
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate_text():
+    return jsonify({
+        'text': translate(request.form['text'], request.form['source_language'], request.form['dest_language'])
+    })
