@@ -1,17 +1,16 @@
 import os
+from dotenv import load_dotenv
+
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, 'confweb.env'))
 
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 's3cr3t'
-    POSTGRES = {
-        'user': 'reymon',
-        'pw': 'reymon',
-        'db': 'dbweb',
-        'host': 'localhost',
-        'port': '5432',
-    }
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                              'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+    SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(
+            os.environ.get('DB_USER'), os.environ.get('DB_PSSW'), os.environ.get('DB_HOST'),
+            os.environ.get('DB_PORT'), os.environ.get('DB_NAME'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
@@ -27,3 +26,5 @@ class Config(object):
     LANGUAGES = ['en', 'es', 'ca', 'de']
 
     MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY')
+
+    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')

@@ -5,23 +5,30 @@ from app.models import User, Prediction
 import os
 
 
+class TestConfig(Config):
+    TESTING = True
+    POSTGRES = {
+        'user': 'reymon',
+        'pw': 'reymon',
+        'db': 'dbwebtest',
+        'host': 'localhost',
+        'port': '5432',
+    }
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL') or 'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+
+
 class UserModelCase(unittest.TestCase):
     def setUp(self):
-        POSTGRES = {
-            'user': 'reymon',
-            'pw': 'reymon',
-            'db': 'dbwebtest',
-            'host': 'localhost',
-            'port': '5432',
-        }
-        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-                                  'postgresql://%(user)s:%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
-        SQLALCHEMY_TRACK_MODIFICATIONS = False
+        self.app = create_app(TestConfig)
+        self.app_context = self.app.app_context()
+        self.app_context.push()
         db.create_all()
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+        self.app_context.pop()
 
     def test_password_hashing(self):
         u = User(username='ramoncito')

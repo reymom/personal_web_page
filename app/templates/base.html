@@ -14,33 +14,33 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+        <link rel="shorcut icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     </head>
 
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
             <div class="container">
-                <a href="{{ url_for('index') }}" class="navbar-brand mr-3">PREdic</a>
+                <a href="{{ url_for('main.index') }}" class="navbar-brand mr-3">PREdic</a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="{{ url_for('explore') }}"
+                        <a href="{{ url_for('main.explore') }}"
                            class="nav-item nav-link {{ 'active' if request.path == '/explore' }}">{{ _('Explore') }}</a>
                         <a href="#" class="nav-item nav-link">{{ _('About') }}</a>
                         <a href="#" class="nav-item nav-link">{{ _('Contact') }}</a>
                     </div>
                     <div class="navbar-nav ml-auto">
-                        <a href="{{ url_for('register') }}"
+                        <a href="{{ url_for('auth.register') }}"
                            class="nav-item nav-link {{ 'active' if request.path == '/register' }}">{{ _('Register') }}</a>
                         {% if current_user.is_anonymous %}
-                        <a href="{{ url_for('login') }}"
+                        <a href="{{ url_for('auth.login') }}"
                            class="nav-item nav-link {{ 'active' if request.path == '/login' }}">{{ _('Login') }}</a>
                         {% else %}
-                        <a href="{{ url_for('user', username=current_user.username) }}"
+                        <a href="{{ url_for('main.user', username=current_user.username) }}"
                            class="nav-item nav-link {{ 'active' if request.path == '/user/{}'.format(current_user.username) }}">Profile</a>
-                        <a href="{{ url_for('logout') }}" class="nav-item nav-link">{{ _('Logout') }}</a>
+                        <a href="{{ url_for('auth.logout') }}" class="nav-item nav-link">{{ _('Logout') }}</a>
                         {% endif %}
                     </div>
                 </div>
@@ -75,12 +75,12 @@
     {{ moment.lang(g.locale) }}
     <script>
         function translate(sourceElem, destElem, sourceLang, destLang) {
-            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">'};
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
             $.post('/translate', {
                 text: $(sourceElem).text(),
                 source_language: sourceLang,
                 dest_language: destLang
-            }}.done(function(response) {
+            }).done(function(response) {
                 $(destElem).text(response['text'])
             }).fail(function() {
                 $(destElem).text("{{ _('Error: Could not contact translator server.') }}");

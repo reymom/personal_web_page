@@ -4,7 +4,7 @@
         <td>
             <div class="badge badge-primary text-wrap" style="width: 15rem;">
                 {{ moment(prediction.timestamp).fromNow() }}</div><br>
-            <a href="{{ url_for('user', username=prediction.author.username) }}">
+            <a href="{{ url_for('main.user', username=prediction.author.username) }}">
                 {{ prediction.author.username }}
             </a>
             {{ _('predicts:') }}
@@ -17,7 +17,7 @@
                     <a href="javascript:translate(
                                     '#prediction{{ prediction.id }}',
                                     '#translation{{ prediction.id }}',
-                                    '{{ prediction.language }},
+                                    '{{ prediction.language }}',
                                     '{{ g.locale }}');">{{ _('Translate') }}</a>
                 </span>
             </em></p>
