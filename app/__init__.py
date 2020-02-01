@@ -34,7 +34,6 @@ def create_app(config_class=Config):
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
 
-
     from app.errors import bp as errors_bp
     app.register_blueprint(errors_bp)
     from app.auth import bp as auth_bp
@@ -52,7 +51,7 @@ def create_app(config_class=Config):
                 secure = ()
             mail_handler = SMTPHandler(
                 mailhost=(app.config['MAIL_SERVER'], app.config['MAIL_PORT']),
-                fromaddr='ramonfcb@' + app.config['MAIL_SERVER'],
+                fromaddr=(app.config['MAIL_USERNAME']),
                 toaddrs=app.config['ADMINS'], subject='[PREdic] Web Failure',
                 credentials=auth, secure=secure)
             mail_handler.setLevel(logging.ERROR)

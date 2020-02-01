@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="jumbotron">
+        {% if total %}
+        <h1>{{ _('%(total)i Found Results', total=total) }}</h1>
+        {% for prediction in predictions %}
+            {% include 'prediction_base.html' %}
+        {% endfor %}
+        <nav aria-label="...">
+            <ul class="pager">
+                <li class="previous{% if not prev_url %} disabled{% endif %}">
+                    <a href="{{ prev_url or '#' }}">
+                        <span aria-hidden="true">&larr;</span>
+                        {{ _('Previous results') }}
+                    </a>
+                </li>
+                <li class="next{% if not next_url %} disabled{% endif %}">
+                    <a href="{{ next_url or '#' }}">
+                        {{ _('Next results') }}
+                        <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        {% else %}
+        <h1>{{ _('Not Found Results') }}</h1>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -11,7 +11,6 @@ from app.auth.forms import LoginForm, RegistrationForm, ResetPasswordForm, Reset
 from app.models import User
 
 
-
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -62,7 +61,7 @@ def reset_password_request():
             send_password_reset_email(user)
         flash(_('Check your email for the instructions to reset your password'))
         return redirect(url_for('auth.login'))
-    return render_template('auth/reset_password_request.html', title='Reset Password', form=form)
+    return render_template('auth/reset_password_request.html', title=_('Reset Password'), form=form)
 
 
 @bp.route('/reset_password/<token>', methods=['GET', 'POST'])

@@ -1,7 +1,6 @@
 <html>
     <head>
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         {% if title %}
         <title>{{ title }} - PREdic</title>
         {% else %}
@@ -31,6 +30,13 @@
                         <a href="#" class="nav-item nav-link">{{ _('About') }}</a>
                         <a href="#" class="nav-item nav-link">{{ _('Contact') }}</a>
                     </div>
+                    {% if g.search_form %}
+                    <form class="form-inline my-2 my-lg-0 navbar-right" method="get" action="{{ url_for('main.search') }}">
+                        <div class="form-group">
+                            {{ g.search_form.q(size=20, class='form-control', placeholder=g.search_form.q.label.text) }}
+                        </div>
+                    </form>
+                    {% endif %}
                     <div class="navbar-nav ml-auto">
                         <a href="{{ url_for('auth.register') }}"
                            class="nav-item nav-link {{ 'active' if request.path == '/register' }}">{{ _('Register') }}</a>

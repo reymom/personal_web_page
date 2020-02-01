@@ -6,7 +6,7 @@ from flask_babel import _, get_locale
 from flask_login import current_user, login_required
 from app import current_app, db
 from app.main import bp
-from app.main.forms import EditProfileForm, PredictionForm
+from app.main.forms import EditProfileForm, PredictionForm, SearchForm
 from app.models import User, Prediction
 from app.translate import translate
 
@@ -15,7 +15,24 @@ from app.translate import translate
 def before_request():
     if current_user.is_authenticated:
         current_user.las_seen = datetime.utcnow()
+        db.session.commit()
+        g.search_form = SearchForm()
     g.locale = str(get_locale())
+
+
+@bp.route('/search')
+@login_required
+def search():
+    if not g.search_form.validate():
+        return redirect(url_for('main.explore'))
+    page = request.args.get('page', 1, type=int)
+    predictions, total = Prediction.search(g.search_form.q.data, page, current_app.config['PREDICTIONS_PER_PAGE_USER'])
+    next_url = url_for('main.search', q=g.search_form.q.data, page=page + 1) \
+        if total > page * current_app.config['PREDICTIONS_PER_PAGE_USER'] else None
+    prev_url = url_for('main.search', q=g.search_form.q.data, page=page - 1) \
+        if page > 1 else None
+    return render_template('search.html', title=_('Search'), predictions=predictions, total=total,
+                           next_url=next_url, prev_url=prev_url)
 
 
 @bp.route('/')
